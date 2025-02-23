@@ -19,7 +19,7 @@ html {
 
 /* Tampilan Awal */
 #opening-screen {
-  width: 100%;
+  width: auto;
   height: 100vh;
   background: url("../assets/home.jpg") no-repeat center center/cover;
   display: flex;
@@ -78,29 +78,32 @@ section {
 
 #home {
   display: none; /* Sembunyikan home awalanya */
-  /* background-image: url(../assets/IMG_8043.JPG); */
-  background-color: aliceblue;
+  background-image: url(../assets/BACKGROUND.png);
+  /* background-color: aliceblue; */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   color: #333;
   padding: 20px;
   height: 100vh;
+  width: auto;
 }
 
 #home .container {
   background-color: rgb(255, 255, 255);
-  border-radius: 130px;
+  border-radius: 140px;
   max-width: 280px;
   height: 580px;
-  margin-left: 65px;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 #home img {
   padding-top: 9px;
   width: auto;
   height: 385px;
-  border-radius: 130px 130px 0 0;
+  border-radius: 140px 140px 0 0;
   box-shadow: inset 2px;
 }
 
@@ -145,6 +148,7 @@ section {
 }
 
 #ayat {
+  padding: 4rem 1.5rem 2.5rem;
   background-color: var(--secondary);
   background-image: url(1);
 }
