@@ -1,7 +1,7 @@
 :root {
-  --primary: #294124;
-  --secondary: #E5F1EF;
-  --bg: #e6f0e4;
+  --primary: #204758;
+  --secondary: #e5ebfd;
+  --bg: #b0b0b0;
   --shadow: 0 2px 2px rgb(0 0 0 / 0.5);
 }
 
@@ -21,7 +21,7 @@ html {
 #opening-screen {
   width: 100%;
   height: 100vh;
-  background: url("../assets/1.jpg") no-repeat center center/cover;
+  background: url("../assets/home.jpg") no-repeat center center/cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,14 +78,18 @@ section {
 
 #home {
   display: none; /* Sembunyikan home awalanya */
-  background-color: var(--bg);
+  /* background-image: url(../assets/IMG_8043.JPG); */
+  background-color: aliceblue;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #333;
   padding: 20px;
   height: 100vh;
 }
 
 #home .container {
-  background-color: rgba(255, 251, 251, 0.6);
+  background-color: rgb(255, 255, 255);
   border-radius: 130px;
   max-width: 280px;
   height: 580px;
@@ -130,14 +134,32 @@ section {
   font-weight: 100;
   font-style: italic;
   background-color: var(--primary);
-  color: #fff;
-  border-radius: 15px;
   margin-top: 10px;
   width: 130px;
+  border-radius: 15px;
+}
+
+.save-the-date a {
+  text-decoration: none;
+  color: #fff;
 }
 
 #ayat {
   background-color: var(--secondary);
+  background-image: url(1);
+}
+
+#ayat h1 {
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+}
+
+#ayat p {
+  font-style: italic;
+}
+
+#ayat h3 {
+  font-size: 1.2rem;
 }
 
 #biodata {
@@ -148,8 +170,7 @@ section {
   width: auto;
   height: 250px;
   border-radius: 20px;
-  border-style: solid;
-  border-color: rgb(255, 255, 255);
+  border: 5px solid white;
 }
 
 #timer {
