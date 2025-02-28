@@ -22,7 +22,9 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Dancing+Script:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sacramento&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="./css/simplyCountdown.theme.default.css" />
+    <script src="./js/simplyCountdown.min.js"></script>
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
     <!-- Tampilan Awal -->
@@ -43,12 +45,14 @@
         <h2>THE WEDDING OF</h2>
         <h1>Wildan & Anisa</h1>
         <h3>Senin, 7 April 2025</h3>
-        <button class="save-the-date"><a href="#detail">Save The Date</a></button>
+        <button class="save-the-date">
+          <a href="#detail">Save The Date</a>
+        </button>
       </div>
     </section>
 
     <section id="ayat">
-      <div class="ayat-content animate-on-scroll fade-up">
+      <div class="ayat animate-on-scroll fade-up">
         <h1 class="animate-slide slide-from-right delay-1">W & A</h1>
         <p class="animate-slide zoom-effect delay-2">
           Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu
@@ -62,25 +66,29 @@
     </section>
 
     <section id="biodata">
-      <div class="biodata1">
-        <h1>Our Special Day</h1>
+      <div class="biodata">
+        <h1 class="judul">Our Special Day</h1>
         <p>
           Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i
           serta kerabat sekalian untuk menghadiri acara pernikahan kami:
         </p>
         <div>
           <img src="assets/wrm.jpg" alt="foto wildan" />
-          <h1>Wildan Rizky Mulia</h1>
-          <p>Putra dari Bapak Nana Mulyana & Ibu Laelatul Badriah</p>
+          <h1 class="name">Wildan Rizky Mulia</h1>
+          <p class="child">
+            Putra dari Bapak Nana Mulyana & Ibu Laelatul Badriah
+          </p>
           <a href="https://instagram.com/wildan_rizkym"
             ><i class="bi bi-instagram"></i
           ></a>
         </div>
         <br />
         <div>
-          <img src="assets/asm.jpg" alt="Foto Anisa" />
-          <h1>Anisa Sahsiatul Muroah</h1>
-          <p>Putra dari Bapak E.Komarudin & Ibu Ating Hernawati (Almh)</p>
+          <img src="assets/asm.jpg" class="pic2" alt="Foto Anisa" />
+          <h1 class="name">Anisa Sahsiatul Muroah</h1>
+          <p class="child">
+            Putra dari Bapak E.Komarudin & Ibu Ating Hernawati (Almh)
+          </p>
           <a href="https://instagram.com/anisasahsyatulm"
             ><i class="bi bi-instagram"></i
           ></a>
@@ -89,83 +97,124 @@
     </section>
 
     <section id="timer">
-      <div>
+      <div class="timer">
         <h1>Save The Date</h1>
-        <p>timer</p>
+        <div class="simply-countdown"></div>
       </div>
     </section>
 
     <section id="detail">
-      <div>
-        <h1>Akad Nikah</h1>
-        <h2>Senin</h2>
-        <h3>7</h3>
-        <h4>April 2025</h4>
-        <h5>Pukul: 08.00 WIB - Selesai</h5>
-        <img src="" alt="icon location" />
-        <p>tempat akad</p>
-      </div>
-      <div>
-        <h1>Resepsi</h1>
-        <h2>Minggu</h2>
-        <h3>6</h3>
-        <h4>April 2025</h4>
-        <h5>Pukul: 10.00 WIB - Selesai</h5>
-        <img src="" alt="icon location" />
-        <p>tempat akad</p>
-        <p>Lihat lokasi</p>
-      </div>
-      <div>
-        <h1>Live Streaming</h1>
-        <h2>
-          Kami mengundang Bapak/Ibu/Saudara/i untuk menyaksikan pernikahan kami
-          secara virtual yang disiarkan langsung melalu media sosial di bawah
-          ini
-        </h2>
-        <h3>Minggu, 6 April 2025</h3>
-        <h5>Pukul: 08.00 WIB - Selesai</h5>
-        <p>Klik di sini</p>
+      <div class="detail">
+        <div class="detail-all detail1">
+          <h1>Akad Nikah</h1>
+          <h2>Senin</h2>
+          <h3>7</h3>
+          <h4>April 2025</h4>
+          <h5>Pukul: 08.00 WIB - Selesai</h5>
+          <i class="bi bi-geo-alt"></i>
+          <p>tempat akad</p>
+        </div>
+        <div class="detail-all detail2">
+          <h1>Resepsi</h1>
+          <h2>Senin</h2>
+          <h3>7</h3>
+          <h4>April 2025</h4>
+          <h5>Pukul: 10.00 WIB - Selesai</h5>
+          <i class="bi bi-geo-alt"></i>
+          <p>tempat akad</p>
+          <a href="" class="loc"><i class="bi bi-geo-alt"></i>Lihat lokasi</a>
+        </div>
+        <div class="detail-all detail3">
+          <h1>Live Streaming</h1>
+          <h2>
+            Kami mengundang Bapak/Ibu/Saudara/i untuk menyaksikan pernikahan
+            kami secara virtual yang disiarkan langsung melalu media sosial di
+            bawah ini
+          </h2>
+          <h3>Senin, 7 April 2025</h3>
+          <h5>Pukul: 08.00 WIB - Selesai</h5>
+          <a href="https://instagram.com/wildan_rizkym"
+            ><i class="bi bi-instagram"></i>Klik di sini</a
+          >
+        </div>
       </div>
     </section>
 
     <section id="story">
-      <div>
-        <h1>LOVE</h1>
-        <h2>Story</h2>
-        <img src="" alt="" />
-      </div>
-      <div>
-        <h1>Awal bertemu</h1>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio nemo
-          quasi velit officiis, quis provident delectus iure porro sequi autem
-          cupiditate illo nisi dignissimos minus, rem eligendi aliquid? Enim,
-          consequuntur.
-        </p>
-      </div>
-      <div>
-        <h1>Lamaran</h1>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio nemo
-          quasi velit officiis, quis provident delectus iure porro sequi autem
-          cupiditate illo nisi dignissimos minus, rem eligendi aliquid? Enim,
-          consequuntur.
-        </p>
-      </div>
-      <div>
-        <h1>Pernikahan</h1>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio nemo
-          quasi velit officiis, quis provident delectus iure porro sequi autem
-          cupiditate illo nisi dignissimos minus, rem eligendi aliquid? Enim,
-          consequuntur.
-        </p>
+      <div class="story">
+        <div class="judul">
+          <h1>LOVE</h1>
+          <h2 class="teks-story">Story</h2>
+          <img src="./assets/story.jpg" alt="story" />
+        </div>
+        <div class="life">
+          <div>
+            <h1>Awal bertemu</h1>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio
+              nemo quasi velit officiis, quis provident delectus iure porro
+              sequi autem cupiditate illo nisi dignissimos minus, rem eligendi
+              aliquid? Enim, consequuntur.
+            </p>
+          </div>
+          <div>
+            <h1>Lamaran</h1>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio
+              nemo quasi velit officiis, quis provident delectus iure porro
+              sequi autem cupiditate illo nisi dignissimos minus, rem eligendi
+              aliquid? Enim, consequuntur.
+            </p>
+          </div>
+          <div>
+            <h1>Pernikahan</h1>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio
+              nemo quasi velit officiis, quis provident delectus iure porro
+              sequi autem cupiditate illo nisi dignissimos minus, rem eligendi
+              aliquid? Enim, consequuntur.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="gallery">
-      <div>
-        <h1>Galeri foto</h1>
+      <div class="gallery">
+        <div>
+          <h1>Galeri Foto</h1>
+        </div>
+        <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-3 row-cols-3 justify-content-center">
+          <div class="col mt-3">
+            <a href="./assets/cover.jpg" data-toggle="lightbox" data-caption="This describes the image" data-gallery="mygallery">
+              <img src="./assets/cover.jpg" alt="Try & Zahra 1" class="img-fluid w-100 rounded">
+            </a>
+          </div>
+          <div class="col mt-3">
+            <a href="./assets/1.jpg" data-toggle="lightbox" data-caption="This describes the image" data-gallery="mygallery">
+              <img src="./assets/1.jpg" alt="Try & Zahra 2" class="img-fluid w-100 rounded">
+            </a>
+          </div>
+          <div class="col mt-3">
+            <a href="./assets/home.jpg" data-toggle="lightbox" data-caption="This describes the image" data-gallery="mygallery">
+              <img src="./assets/home.jpg" alt="Try & Zahra 3" class="img-fluid w-100 rounded">
+            </a>
+          </div>
+          <div class="col mt-3">
+            <a href="./img/gallery/g4.jpeg" data-toggle="lightbox" data-caption="This describes the image" data-gallery="mygallery">
+              <img src="./img/gallery/thumbnail/g4.jpeg" alt="Try & Zahra 4" class="img-fluid w-100 rounded">
+            </a>
+          </div>
+          <div class="col mt-3">
+            <a href="./img/gallery/g5.jpeg" data-toggle="lightbox" data-caption="This describes the image" data-gallery="mygallery">
+              <img src="./img/gallery/thumbnail/g5.jpeg" alt="Try & Zahra 5" class="img-fluid w-100 rounded">
+            </a>
+          </div>
+          <div class="col mt-3">
+            <a href="./img/gallery/g2.jpeg" data-toggle="lightbox" data-caption="This describes the image" data-gallery="mygallery">
+              <img src="./img/gallery/thumbnail/g2.jpeg" alt="Try & Zahra 6" class="img-fluid w-100 rounded">
+            </a>
+          </div>
       </div>
     </section>
 
@@ -183,6 +232,24 @@
     </section>
 
     <!-- <footer></footer> -->
+
+    <!-- Lightbox Modal -->
+    <div id="modal" class="modal">
+      <div class="modal-top">
+        <span>00:55</span>
+        <span>4G25</span>
+      </div>
+
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <span class="nav-arrow prev" onclick="changeSlide(-1)">&#10094;</span>
+      <span class="nav-arrow next" onclick="changeSlide(1)">&#10095;</span>
+
+      <img class="modal-content" id="modalImage" />
+
+      <div class="modal-bottom">
+        <span id="counter">1/5</span>
+      </div>
+    </div>
 
     <section>
       <div id="audio-container">
@@ -204,6 +271,7 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <script src="../js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
+    <script src="./js/script.js"></script>
   </body>
 </html>
