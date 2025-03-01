@@ -5,21 +5,27 @@
   --shadow: 0 2px 2px rgb(0 0 0 / 0.5);
 }
 
-body,
-html {
-  scroll-behavior: smooth;
+/* Reset dasar */
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  scroll-behavior: smooth;
   font-family: "Cormorant", sans-serif;
-  overflow-x: hidden;
   width: 100%;
-  max-width: 450px; /* Batasi lebar maksimum */
-  margin: 0 auto; /* Pusatkan konten */
+  max-width: 450px;
+  min-width: 450px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* Tampilan Awal */
 #opening-screen {
-  width: auto;
+  width: 100%;
   height: 100vh;
   background: url("../assets/home.jpg") no-repeat center center/cover;
   display: flex;
@@ -27,14 +33,12 @@ html {
   align-items: center;
   color: white;
   text-align: center;
-  position: relative;
-  transition: transform 1s ease-in-out; /* Animasi slide up */
+  transition: transform 1s ease-in-out;
 }
 
 #opening-screen .content {
   margin-top: 150px;
   padding: 20px;
-  border-radius: 10px;
 }
 
 #opening-screen h2 {
@@ -43,7 +47,7 @@ html {
 }
 
 #opening-screen h1 {
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", "Cormorant", sans-serif;
   font-weight: 100;
   font-size: 2.5em;
   margin: 10px 0;
@@ -58,7 +62,7 @@ html {
 #open-invitation {
   margin-top: 1rem;
   padding: 5px 20px;
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
   font-size: 0.7rem;
   border: 1.2px solid white;
   border-radius: 5px;
@@ -71,27 +75,37 @@ html {
 section {
   display: none; /* Sembunyikan semua section awalanya */
   width: 100%;
+  max-width: 450px;
+  min-width: 450px;
   padding: 20px;
   box-sizing: border-box;
   text-align: center;
+  overflow-x: hidden;
 }
 
 #home {
   display: none; /* Sembunyikan home awalanya */
-  background-image: url(../assets/BACKGROUND.png);
-  /* background-color: #f0f8ff; */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   color: #333;
   padding: 20px;
   height: 100vh;
   width: auto;
 }
 
+#home,
+#biodata,
+#gallery  {
+  background-image: url(../assets/BACKGROUND.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: auto;
+  max-width: 450px;
+}
+
 #home .container {
   background-color: rgb(255, 255, 255);
   border-radius: 140px;
+  margin-top: 40px;
   max-width: 280px;
   height: 580px;
   align-items: center;
@@ -152,16 +166,19 @@ section {
 .timer,
 .detail,
 .story,
-.gallery {
+.gallery,
+.wishes,
+.thanks {
   margin: 3.5rem 0 3rem;
 }
 
-#ayat {
+#ayat,
+#detail {
   background-color: var(--secondary);
 }
 
 #ayat h1 {
-  font-family: "Dancing Script";
+  font-family: "Dancing Script", "Cormorant", sans-serif;
   color: var(--primary);
   font-weight: 700;
   font-size: 2.2rem;
@@ -174,15 +191,6 @@ section {
 
 #ayat h3 {
   font-size: 1.2rem;
-}
-
-#biodata,
-#detail,
-#gallery {
-  background-image: url(../assets/BACKGROUND.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 #biodata img {
@@ -226,9 +234,22 @@ section {
   margin-top: 2rem;
 }
 
-#timer, 
-#story {
-  background-color: var(--secondary);
+#timer {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Sesuaikan tinggi section */
+  overflow: hidden;
+}
+
+#bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1; /* Pastikan video di belakang konten */
 }
 
 .timer h1 {
@@ -242,6 +263,10 @@ section {
 .detail-all {
   margin-top: -2rem;
   background-color: var(--secondary);
+  background-image: url(../assets/BACKGROUND.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   border-radius: 20px;
 }
 
@@ -327,6 +352,10 @@ section {
   padding-right: 5px;
 }
 
+#story {
+  background-color: var(--secondary);
+}
+
 .story {
   background-image: url(../assets/BACKGROUND.png);
   background-position: center;
@@ -381,12 +410,12 @@ section {
   font-size: 2.5rem;
   position: fixed;
   bottom: 3rem;
-  right: 2rem;
+  right: 1rem;
   cursor: pointer;
   color: white;
   opacity: 0.5;
   mix-blend-mode: difference;
-  animation: rotating 4s linear infinite;
+  animation: rotating 7s linear infinite;
   transform-origin: center;
   display: flex;
   justify-content: center;

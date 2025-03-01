@@ -43,7 +43,7 @@ const audioController = (() => {
 
   const play = () => {
     try {
-      song.volume = 0.6;
+      song.volume = 0.3;
       audioIconWrapper.style.display = "flex";
       song.play();
       isPlaying = true;
