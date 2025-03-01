@@ -24,7 +24,7 @@
     />
     <link rel="stylesheet" href="./css/simplyCountdown.theme.default.css" />
     <script src="./js/simplyCountdown.min.js"></script>
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="preload" href="./css/styles.css" as="style" onload="this.rel='stylesheet'">
   </head>
   <body>
     <!-- Tampilan Awal -->
@@ -53,15 +53,16 @@
 
     <section id="ayat">
       <div class="ayat animate-slide">
-        <h1 class="animate-slide slide-from-right delay-3">W & A</h1>
-        <p class="animate-slide zoom-effect delay-3">
+        <img src="./assets/flower.svg" alt="flower" class="animate-slide slide-from-top delay-1">
+        <h1 class="animate-slide slide-from-bottom delay-5">W & A</h1>
+        <p class="animate-slide zoom-effect delay-5">
           Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu
           isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa
           tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan
           sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat
           tanda-tanda bagi kaum yang berfikir.
         </p>
-        <h3 class="animate-slide zoom-effect delay-3">~ Ar-Rum 21 ~</h3>
+        <h3 class="animate-slide zoom-effect delay-5">~ Ar-Rum 21 ~</h3>
       </div>
     </section>
 
@@ -147,14 +148,14 @@
     <section id="story">
       <div class="story">
         <div class="judul">
-          <h1>LOVE</h1>
-          <h2 class="teks-story">Story</h2>
-          <img src="./assets/story.jpg" alt="story" />
+          <h1 class="animate-slide slide-from-top delay-3">LOVE</h1>
+          <h2 class="teks-story animate-slide slide-from-bottom delay-3">Story</h2>
+          <img src="./assets/story.jpg" alt="story" class="animate-slide fade-scale-in delay-3"/>
         </div>
         <div class="life">
           <div>
-            <h1>Awal bertemu</h1>
-            <p>
+            <h1 class="animate-slide slide-from-left delay-3">Awal bertemu</h1>
+            <p class="animate-slide slide-from-bottom delay-3">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio
               nemo quasi velit officiis, quis provident delectus iure porro
               sequi autem cupiditate illo nisi dignissimos minus, rem eligendi
@@ -162,8 +163,8 @@
             </p>
           </div>
           <div>
-            <h1>Lamaran</h1>
-            <p>
+            <h1 class="animate-slide slide-from-left delay-3">Lamaran</h1>
+            <p class="animate-slide slide-from-bottom delay-3">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio
               nemo quasi velit officiis, quis provident delectus iure porro
               sequi autem cupiditate illo nisi dignissimos minus, rem eligendi
@@ -171,8 +172,8 @@
             </p>
           </div>
           <div>
-            <h1>Pernikahan</h1>
-            <p>
+            <h1 class="animate-slide slide-from-left delay-3">Pernikahan</h1>
+            <p class="animate-slide slide-from-bottom delay-3">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio
               nemo quasi velit officiis, quis provident delectus iure porro
               sequi autem cupiditate illo nisi dignissimos minus, rem eligendi
@@ -186,7 +187,7 @@
     <section id="gallery">
       <div class="gallery">
         <div>
-          <h1>Galeri Foto</h1>
+          <h1 class="animate-slide slide-from-bottom delay-3">Galeri Foto</h1>
         </div>
         <div
           class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-3 row-cols-3 justify-content-center"
@@ -201,7 +202,7 @@
               <img
                 src="./assets/cover.jpg"
                 alt="Galeri 1"
-                class="img-fluid w-100 rounded"
+                class="img-fluid w-100 rounded animate-slide slide-from-bottom delay-3"
               />
             </a>
           </div>
@@ -215,7 +216,7 @@
               <img
                 src="./assets/1.jpg"
                 alt="Galeri 2"
-                class="img-fluid w-100 rounded"
+                class="img-fluid w-100 rounded animate-slide slide-from-bottom delay-4"
               />
             </a>
           </div>
@@ -229,7 +230,7 @@
               <img
                 src="./assets/home.jpg"
                 alt="Galeri 3"
-                class="img-fluid w-100 rounded"
+                class="img-fluid w-100 rounded animate-slide slide-from-bottom delay-5"
               />
             </a>
           </div>
@@ -243,7 +244,7 @@
               <img
                 src="./assets/2.jpg"
                 alt="Galeri 4"
-                class="img-fluid w-100 rounded"
+                class="img-fluid w-100 rounded animate-slide slide-from-bottom delay-3"
               />
             </a>
           </div>
@@ -257,7 +258,7 @@
               <img
                 src="./assets/3.jpg"
                 alt="Galeri 5"
-                class="img-fluid w-100 rounded"
+                class="img-fluid w-100 rounded animate-slide slide-from-bottom delay-4"
               />
             </a>
           </div>
@@ -271,13 +272,57 @@
               <img
                 src="./assets/4.jpg"
                 alt="Galeri 6"
-                class="img-fluid w-100 rounded"
+                class="img-fluid w-100 rounded animate-slide slide-from-bottom delay-5"
               />
             </a>
           </div>
         </div>
       </div>
     </section>
+
+    <section id="wedding-gift">
+      <div class="gift-content">
+          <h2 class="judul">Wedding Gift</h2>
+          <p class="gift-text">
+              Doa Restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi kado secara cashless.
+          </p>
+
+          <button class="toggle-btn" onclick="toggleDropdown()">
+              Klik di sini 
+              <span class="arrow">▼</span>
+          </button>
+
+          <div class="dropdown-content">
+              <!-- Bank Account 1 -->
+              <div class="bri-card">
+                  <div class="account-number">1234 5678 90</div>
+                  <div class="account-name">HABIB</div>
+                  <button class="copy-btn" onclick="copyAccount(this, '1234 5678 90')">
+                      <i class="bi bi-copy"></i> Copy
+                  </button>
+              </div>
+
+              <!-- Bank Account 2 -->
+              <div class="dana-card">
+                  <div class="account-number">1234 5678 90</div>
+                  <div class="account-name">HABIB</div>
+                  <button class="copy-btn" onclick="copyAccount(this, '1234 5678 90')">
+                    <i class="bi bi-copy"></i> Copy
+                  </button>
+              </div>
+
+              <!-- Recipient Info -->
+              <div class="recipient-info">
+                <i class="bi bi-gift-fill"></i>
+                  <p><strong>Kirim Hadiah</strong></p>
+                  <p>Nama Penerima : Habib Yulianto</p>
+                  <p>No. HP : 1234 5678 90</p>
+                  <p>Ds Pagu Kec.Wates Kab. Kediri</p>
+              </div>
+
+          </div>
+      </div>
+  </section>
 
     <section id="wishes">
       <div>

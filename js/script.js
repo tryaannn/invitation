@@ -34,6 +34,62 @@ const initScrollAnimations = () => {
   });
 };
 
+//dropdown
+function toggleDropdown() {
+  const dropdown = document.getElementById('dropdown');
+  dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
+
+function copyAccount(number) {
+  navigator.clipboard.writeText(number)
+      .then(() => alert('Nomor rekening berhasil disalin!'))
+      .catch(err => console.error('Gagal menyalin:', err));
+}
+
+//toggle gift 
+function toggleDropdown() {
+  const dropdown = document.querySelector('.dropdown-content');
+  const arrow = document.querySelector('.arrow');
+  dropdown.classList.toggle('active');
+  arrow.style.transform = dropdown.classList.contains('active') 
+    ? 'rotate(180deg)' 
+    : 'rotate(0deg)';
+}
+
+// Fungsi untuk copy nomor rekening
+function copyAccount(buttonElement, accountNumber) {
+  navigator.clipboard.writeText(accountNumber)
+    .then(() => {
+      // Simpan teks asli tombol
+      const originalText = buttonElement.innerHTML;
+
+      // Update tampilan tombol
+      buttonElement.innerHTML = '<i class="bi bi-check2"></i> Tersalin!';
+      buttonElement.classList.add('copied');
+
+      // Reset tombol setelah 2 detik
+      setTimeout(() => {
+        buttonElement.innerHTML = originalText;
+        buttonElement.classList.remove('copied');
+      }, 2000);
+    })
+    .catch(err => {
+      console.error('Gagal menyalin:', err);
+      alert('Gagal menyalin ke clipboard');
+    });
+}
+
+// Tutup dropdown saat klik di luar area
+document.addEventListener('click', (e) => {
+  const dropdown = document.querySelector('.dropdown-content');
+  const button = document.querySelector('.toggle-btn');
+
+  if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+    dropdown.classList.remove('active');
+    document.querySelector('.arrow').style.transform = 'rotate(0deg)';
+  }
+});
+
 // ===================== FUNGSI AUDIO =====================
 const audioController = (() => {
   const audioIconWrapper = document.querySelector('.audio-icon-wrapper');
