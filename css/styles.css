@@ -11,13 +11,14 @@ body {
   max-width: 450px !important;
   min-width: 449px;
   margin: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   position: absolute;
 }
 
 /* Tampilan Awal */
 #opening-screen {
-  width: 100vw;
+  margin: auto;
+  width: 100%;
   height: 100vh;
   background: url("../assets/home.jpg") no-repeat center center/cover;
   display: flex;
@@ -679,13 +680,74 @@ section {
   font-size: 12px;
   color: #555;
 }
-.time-stamp {
-  font-size: 12px;
-  color: #999;
+.wishes .comments .comment-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
 }
-.comment-body {
+.wishes .comments .avatar {
+  width: 40px;
+  height: 40px;
+  background: #ccc url("https://via.placeholder.com/40") center/cover no-repeat;
+  border-radius: 50%;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+.wishes .comments .comment-bubble {
+  background: #fdfdfd;
+  padding: 10px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+.wishes .comments .comment-bubble::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 10px;
+  width: 0;
+  height: 0;
+  border-right: 10px solid #fdfdfd;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+.wishes .comments .comment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.wishes .comments .comment-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+.wishes .comments .presence-badge {
+  font-size: 12px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  color: #fff;
+  margin-left: 5px;
+}
+.wishes .comments .hadir {
+  background: #4caf50;
+}
+
+.wishes .comments .tidak-hadir {
+  background: #f44336;
+}
+
+.wishes .comments .timestamp {
+  font-size: 11px;
+  color: #999;
+  margin-left: 10px;
+}
+
+.wishes .comments .comment-text {
   font-size: 14px;
   color: #333;
+  margin-top: 4px;
+  white-space: pre-wrap;
 }
 
 .audio-icon-wrapper {

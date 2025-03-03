@@ -166,57 +166,122 @@ simplyCountdown(".simply-countdown", {
 });
 
 // wishes
-let hadirCount = 0;
-let tidakHadirCount = 0;
+document.addEventListener('DOMContentLoaded', renderComments);
 
 function kirimUcapan() {
-  const nama = document.getElementById("nama").value.trim();
-  const ucapan = document.getElementById("ucapan").value.trim();
-  const kehadiran = document.getElementById("kehadiran").value;
-  const commentSection = document.getElementById("commentSection");
+  const namaEl = document.getElementById('nama');
+  const ucapanEl = document.getElementById('ucapan');
+  const kehadiranEl = document.getElementById('kehadiran');
 
-  if (nama === "" || ucapan === "") {
-    alert("Harap isi semua kolom!");
+  const nama = namaEl.value.trim();
+  const ucapan = ucapanEl.value.trim();
+  const kehadiran = kehadiranEl.value;
+
+  if (!nama || !ucapan) {
+    alert('Silakan isi nama dan ucapan!');
     return;
   }
 
+  // Buat timestamp menggunakan locale Indonesia
   const now = new Date();
-  // Menggunakan toLocaleString agar menampilkan tanggal dan waktu
-  const options = {
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-  };
-  const timestamp = now.toLocaleString("id-ID", options);
+  const timestamp = now.toLocaleString('id-ID', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
 
-  const commentDiv = document.createElement("div");
-  commentDiv.classList.add("comment");
-  commentDiv.innerHTML = `
-        <div class="comment-header">
-          <div><strong>${nama}</strong> <em>(${kehadiran})</em></div>
-          <div class="time-stamp">${timestamp}</div>
-        </div>
-        <div class="comment-body">
-          ${ucapan}
-        </div>
-      `;
+  // Buat objek komentar baru
+  const newComment = { nama, ucapan, kehadiran, waktu: timestamp };
 
-  commentSection.prepend(commentDiv);
+  // Ambil data komentar dari localStorage (jika ada)
+  let comments = JSON.parse(localStorage.getItem('comments')) || [];
+  // Tambahkan komentar baru di awal array (agar muncul di atas)
+  comments.unshift(newComment);
+  // Simpan kembali ke localStorage
+  localStorage.setItem('comments', JSON.stringify(comments));
 
-  if (kehadiran === "hadir") {
-    hadirCount++;
-    document.getElementById("hadirCount").innerText = hadirCount;
-  } else {
-    tidakHadirCount++;
-    document.getElementById("tidakHadirCount").innerText = tidakHadirCount;
-  }
+  // Reset input
+  namaEl.value = '';
+  ucapanEl.value = '';
 
-  // Reset input fields
-  document.getElementById("nama").value = "";
-  document.getElementById("ucapan").value = "";
+  renderComments();
+}
+
+function renderComments() {
+  const commentSection = document.getElementById('commentSection');
+  commentSection.innerHTML = '';
+
+  // Ambil data komentar dari localStorage
+  const comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+  let hadirCount = 0;
+  let tidakHadirCount = 0;
+
+  comments.forEach(comment => {
+    // Hitung counter
+    if (comment.kehadiran === 'hadir') {
+      hadirCount++;
+    } else {
+      tidakHadirCount++;
+    }
+
+    // Buat container utama untuk tiap komentar
+    const commentItem = document.createElement('div');
+    commentItem.classList.add('comment-item');
+
+    // Avatar (gunakan placeholder atau ganti dengan URL avatar jika tersedia)
+    const avatar = document.createElement('div');
+    avatar.classList.add('avatar');
+
+    // Buat gelembung komentar
+    const bubble = document.createElement('div');
+    bubble.classList.add('comment-bubble');
+
+    // Header komentar (nama, badge kehadiran, timestamp)
+    const header = document.createElement('div');
+    header.classList.add('comment-header');
+
+    const nameSpan = document.createElement('span');
+    nameSpan.classList.add('comment-name');
+    nameSpan.textContent = comment.nama;
+
+    const badge = document.createElement('span');
+    badge.classList.add('presence-badge');
+    if (comment.kehadiran === 'hadir') {
+      badge.classList.add('hadir');
+      badge.textContent = 'Hadir';
+    } else {
+      badge.classList.add('tidak-hadir');
+      badge.textContent = 'Tidak Hadir';
+    }
+
+    const timeSpan = document.createElement('span');
+    timeSpan.classList.add('timestamp');
+    timeSpan.textContent = comment.waktu;
+
+    header.appendChild(nameSpan);
+    header.appendChild(badge);
+    header.appendChild(timeSpan);
+
+    // Isi komentar
+    const body = document.createElement('div');
+    body.classList.add('comment-text');
+    body.textContent = comment.ucapan;
+
+    bubble.appendChild(header);
+    bubble.appendChild(body);
+
+    commentItem.appendChild(avatar);
+    commentItem.appendChild(bubble);
+
+    commentSection.appendChild(commentItem);
+  });
+
+  // Update counter kehadiran
+  document.getElementById('hadirCount').textContent = hadirCount;
+  document.getElementById('tidakHadirCount').textContent = tidakHadirCount;
 }
 
 // ===================== FUNGSI UTAMA =====================
