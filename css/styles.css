@@ -5,26 +5,19 @@
   --shadow: 0 1px 2px rgb(0 0 0 / 0.3);
 }
 
-/* Reset dasar */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
   scroll-behavior: smooth;
   font-family: "Cormorant", sans-serif;
-  max-width: 450px;
-  min-width: 450px;
-  margin: 0 auto;
+  max-width: 450px !important;
+  min-width: 449px;
+  margin: auto;
   overflow-x: hidden;
-  position: relative;
+  position: absolute;
 }
 
 /* Tampilan Awal */
 #opening-screen {
-  width: auto;
+  width: 100vw;
   height: 100vh;
   background: url("../assets/home.jpg") no-repeat center center/cover;
   display: flex;
@@ -92,6 +85,8 @@ section {
   max-width: 450px;
   min-width: 450px;
   padding: 20px;
+  margin: auto;
+  justify-content: center;
   box-sizing: border-box;
   text-align: center;
   overflow: hidden;
@@ -108,7 +103,7 @@ section {
 
 #home,
 #biodata,
-#gallery  {
+#gallery {
   background: url(../assets/BACKGROUND.png) no-repeat center center/cover;
   width: auto;
   max-width: 450px;
@@ -141,7 +136,7 @@ section {
 }
 
 #home h1 {
-  font-family: 'Dancing Script', sans-serif;
+  font-family: "Dancing Script", sans-serif;
   font-size: 2rem;
   text-shadow: #fff;
   margin: 0;
@@ -178,6 +173,7 @@ section {
 .detail,
 .story,
 .gallery,
+.gift,
 .wishes,
 .thanks {
   margin: 3.5rem 0 3rem;
@@ -186,7 +182,8 @@ section {
 #ayat,
 #detail,
 #story,
-#wedding-gift {
+#wedding-gift,
+#wishes {
   background-color: var(--secondary);
 }
 
@@ -225,7 +222,8 @@ section {
 .biodata .judul,
 .detail h1,
 .gallery h1,
-.gift-content .judul {
+.gift-content .judul,
+.wishes h1 {
   font-family: "Dancing Script", "Cormorant", sans-serif;
   color: var(--primary);
   text-shadow: var(--shadow);
@@ -412,7 +410,7 @@ section {
 
 .story .life p {
   font-size: 1rem;
-  text-align: start;
+  text-align: justify;
   color: black;
   font-style: italic;
   font-weight: 500;
@@ -574,6 +572,122 @@ section {
   font-size: 0.9rem;
 }
 
+.wishes-container {
+  margin-top: -1.5rem;
+  width: 400px;
+  background: url(../assets/BACKGROUND.png) no-repeat center center/cover;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  font-weight: 700;
+}
+
+.wishes h1 {
+  padding-top: 20px;
+}
+
+.wishes p {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.counters {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin: 20px 0;
+}
+
+.counter {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.present {
+  background-color: #d4f8d4;
+  color: #149500;
+  width: 90px;
+  height: 50px;
+}
+
+.absent {
+  background-color: #f8d4d4;
+  color: #950011;
+  width: 90px;
+  height: 50px;
+}
+
+.wishes input[type="text"],
+.wishes textarea,
+.wishes select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.wishes textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.wishes button {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.comments {
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  text-align: left;
+}
+.comment {
+  background: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.comment-header strong {
+  font-size: 14px;
+}
+.comment-header em {
+  font-size: 12px;
+  color: #555;
+}
+.time-stamp {
+  font-size: 12px;
+  color: #999;
+}
+.comment-body {
+  font-size: 14px;
+  color: #333;
+}
+
 .audio-icon-wrapper {
   width: 4rem;
   height: 4rem;
@@ -595,10 +709,10 @@ section {
 
 @keyframes rotating {
   from {
-      transform: rotate(0);
+    transform: rotate(0);
   }
   to {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -674,16 +788,38 @@ section {
 }
 
 /* Variasi Arah */
-.slide-from-top { transform: translateY(-50px); }
-.slide-from-bottom { transform: translateY(50px); }
-.slide-from-left { transform: translateX(-50px); }
-.slide-from-right { transform: translateX(50px); }
-.zoom-effect { transform: scale(0.95); }
+.slide-from-top {
+  transform: translateY(-50px);
+}
+.slide-from-bottom {
+  transform: translateY(50px);
+}
+.slide-from-left {
+  transform: translateX(-50px);
+}
+.slide-from-right {
+  transform: translateX(50px);
+}
+.zoom-effect {
+  transform: scale(0.95);
+}
 
 /* Delay */
-.delay-1 { transition-delay: 0.2s; }
-.delay-2 { transition-delay: 0.4s; }
-.delay-3 { transition-delay: 0.6s; }
-.delay-4 { transition-delay: 0.8s; }
-.delay-5 { transition-delay: 1s; }
-.delay-6 { transition-delay: 1.2s; }
+.delay-1 {
+  transition-delay: 0.2s;
+}
+.delay-2 {
+  transition-delay: 0.4s;
+}
+.delay-3 {
+  transition-delay: 0.6s;
+}
+.delay-4 {
+  transition-delay: 0.8s;
+}
+.delay-5 {
+  transition-delay: 1s;
+}
+.delay-6 {
+  transition-delay: 1.2s;
+}

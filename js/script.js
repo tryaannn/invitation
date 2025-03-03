@@ -1,100 +1,107 @@
 // ===================== ANIMASI SCROLL MANUAL =====================
 const initScrollAnimations = () => {
-  const elements = document.querySelectorAll('.animate-slide');
+  const elements = document.querySelectorAll(".animate-slide");
   const observerOptions = {
     threshold: 0.3,
-    rootMargin: '0px 0px -100px 0px'
+    rootMargin: "0px 0px -100px 0px",
   };
 
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       const element = entry.target;
-      
-      if(entry.isIntersecting) {
+
+      if (entry.isIntersecting) {
         // Animasi Masuk
-        element.classList.add('animate-in');
-        element.classList.remove('animate-out');
+        element.classList.add("animate-in");
+        element.classList.remove("animate-out");
       } else {
         // Animasi Keluar
-        if(element.classList.contains('animate-in')) {
-          element.classList.add('animate-out');
-          element.classList.remove('animate-in');
-          
+        if (element.classList.contains("animate-in")) {
+          element.classList.add("animate-out");
+          element.classList.remove("animate-in");
+
           // Reset state setelah animasi keluar selesai
-          element.addEventListener('transitionend', () => {
-            element.classList.remove('animate-out');
-          }, {once: true});
+          element.addEventListener(
+            "transitionend",
+            () => {
+              element.classList.remove("animate-out");
+            },
+            { once: true }
+          );
         }
       }
     });
   }, observerOptions);
 
-  elements.forEach(element => {
+  elements.forEach((element) => {
     observer.observe(element);
   });
 };
 
 //dropdown
 function toggleDropdown() {
-  const dropdown = document.getElementById('dropdown');
-  dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+  const dropdown = document.getElementById("dropdown");
+  dropdown.style.display =
+    dropdown.style.display === "block" ? "none" : "block";
 }
 
 function copyAccount(number) {
-  navigator.clipboard.writeText(number)
-      .then(() => alert('Nomor rekening berhasil disalin!'))
-      .catch(err => console.error('Gagal menyalin:', err));
+  navigator.clipboard
+    .writeText(number)
+    .then(() => alert("Nomor rekening berhasil disalin!"))
+    .catch((err) => console.error("Gagal menyalin:", err));
 }
 
-//toggle gift 
+//toggle gift
 function toggleDropdown() {
-  const dropdown = document.querySelector('.dropdown-content');
-  const arrow = document.querySelector('.arrow');
-  dropdown.classList.toggle('active');
-  arrow.style.transform = dropdown.classList.contains('active') 
-    ? 'rotate(180deg)' 
-    : 'rotate(0deg)';
+  const dropdown = document.querySelector(".dropdown-content");
+  const arrow = document.querySelector(".arrow");
+  dropdown.classList.toggle("active");
+  arrow.style.transform = dropdown.classList.contains("active")
+    ? "rotate(180deg)"
+    : "rotate(0deg)";
 }
 
 // Fungsi untuk copy nomor rekening
 function copyAccount(buttonElement, accountNumber) {
-  navigator.clipboard.writeText(accountNumber)
+  navigator.clipboard
+    .writeText(accountNumber)
     .then(() => {
       // Simpan teks asli tombol
       const originalText = buttonElement.innerHTML;
 
       // Update tampilan tombol
       buttonElement.innerHTML = '<i class="bi bi-check2"></i> Tersalin!';
-      buttonElement.classList.add('copied');
+      buttonElement.classList.add("copied");
 
       // Reset tombol setelah 2 detik
       setTimeout(() => {
         buttonElement.innerHTML = originalText;
-        buttonElement.classList.remove('copied');
+        buttonElement.classList.remove("copied");
       }, 2000);
     })
-    .catch(err => {
-      console.error('Gagal menyalin:', err);
-      alert('Gagal menyalin ke clipboard');
+    .catch((err) => {
+      console.error("Gagal menyalin:", err);
+      alert("Gagal menyalin ke clipboard");
     });
 }
 
 // Tutup dropdown saat klik di luar area
-document.addEventListener('click', (e) => {
-  const dropdown = document.querySelector('.dropdown-content');
-  const button = document.querySelector('.toggle-btn');
+document.addEventListener("click", (e) => {
+  const dropdown = document.querySelector(".dropdown-content");
+  const button = document.querySelector(".toggle-btn");
 
   if (!button.contains(e.target) && !dropdown.contains(e.target)) {
-    dropdown.classList.remove('active');
-    document.querySelector('.arrow').style.transform = 'rotate(0deg)';
+    dropdown.classList.remove("active");
+    document.querySelector(".arrow").style.transform = "rotate(0deg)";
   }
 });
 
 // ===================== FUNGSI AUDIO =====================
 const audioController = (() => {
-  const audioIconWrapper = document.querySelector('.audio-icon-wrapper');
-  const audioIcon = document.querySelector('.audio-icon-wrapper i');
-  const song = document.querySelector('#song');
+  const audioIconWrapper = document.querySelector(".audio-icon-wrapper");
+  const audioIcon = document.querySelector(".audio-icon-wrapper i");
+  const song = document.querySelector("#song");
   let isPlaying = false;
 
   const play = () => {
@@ -103,8 +110,8 @@ const audioController = (() => {
       audioIconWrapper.style.display = "flex";
       song.play();
       isPlaying = true;
-      audioIcon.classList.add('bi-disc');
-      audioIcon.classList.remove('bi-pause-circle');
+      audioIcon.classList.add("bi-disc");
+      audioIcon.classList.remove("bi-pause-circle");
     } catch (err) {
       console.log("Gagal memutar audio:", err);
     }
@@ -113,12 +120,12 @@ const audioController = (() => {
   const toggle = () => {
     if (isPlaying) {
       song.pause();
-      audioIcon.classList.remove('bi-disc');
-      audioIcon.classList.add('bi-pause-circle');
+      audioIcon.classList.remove("bi-disc");
+      audioIcon.classList.add("bi-pause-circle");
     } else {
       song.play();
-      audioIcon.classList.add('bi-disc');
-      audioIcon.classList.remove('bi-pause-circle');
+      audioIcon.classList.add("bi-disc");
+      audioIcon.classList.remove("bi-pause-circle");
     }
     isPlaying = !isPlaying;
   };
@@ -158,41 +165,99 @@ simplyCountdown(".simply-countdown", {
   countUp: false, // enable count up if set to true
 });
 
+// wishes
+let hadirCount = 0;
+let tidakHadirCount = 0;
+
+function kirimUcapan() {
+  const nama = document.getElementById("nama").value.trim();
+  const ucapan = document.getElementById("ucapan").value.trim();
+  const kehadiran = document.getElementById("kehadiran").value;
+  const commentSection = document.getElementById("commentSection");
+
+  if (nama === "" || ucapan === "") {
+    alert("Harap isi semua kolom!");
+    return;
+  }
+
+  const now = new Date();
+  // Menggunakan toLocaleString agar menampilkan tanggal dan waktu
+  const options = {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  };
+  const timestamp = now.toLocaleString("id-ID", options);
+
+  const commentDiv = document.createElement("div");
+  commentDiv.classList.add("comment");
+  commentDiv.innerHTML = `
+        <div class="comment-header">
+          <div><strong>${nama}</strong> <em>(${kehadiran})</em></div>
+          <div class="time-stamp">${timestamp}</div>
+        </div>
+        <div class="comment-body">
+          ${ucapan}
+        </div>
+      `;
+
+  commentSection.prepend(commentDiv);
+
+  if (kehadiran === "hadir") {
+    hadirCount++;
+    document.getElementById("hadirCount").innerText = hadirCount;
+  } else {
+    tidakHadirCount++;
+    document.getElementById("tidakHadirCount").innerText = tidakHadirCount;
+  }
+
+  // Reset input fields
+  document.getElementById("nama").value = "";
+  document.getElementById("ucapan").value = "";
+}
+
 // ===================== FUNGSI UTAMA =====================
 document.addEventListener("DOMContentLoaded", () => {
   // Event Buka Undangan
-  document.getElementById("open-invitation").addEventListener("click", function() {
-    // Trigger animasi slide up
-    document.getElementById("opening-screen").classList.add("slide-up");
+  document
+    .getElementById("open-invitation")
+    .addEventListener("click", function () {
+      // Trigger animasi slide up
+      document.getElementById("opening-screen").classList.add("slide-up");
 
-    setTimeout(() => {
-      // Sembunyikan tampilan awal
-      document.getElementById("opening-screen").style.display = "none";
-      
-      // Tampilkan semua section
-      document.querySelectorAll('section').forEach(section => {
-        section.style.display = "flex";
-      });
+      setTimeout(() => {
+        // Sembunyikan tampilan awal
+        document.getElementById("opening-screen").style.display = "none";
 
-      // Inisialisasi animasi scroll
-      initScrollAnimations();
-      
-      // Refresh animasi setiap 200ms selama 1 detik
-      let refreshCount = 0;
-      const refreshInterval = setInterval(() => {
+        // Tampilkan semua section
+        document.querySelectorAll("section").forEach((section) => {
+          section.style.display = "flex";
+        });
+
+        // Inisialisasi animasi scroll
         initScrollAnimations();
-        if (++refreshCount >= 5) clearInterval(refreshInterval);
-      }, 200);
 
-      // Mulai musik
-      audioController.play();
-      
-      // Aktifkan scroll
-      document.documentElement.style.overflow = 'auto';
-      document.body.style.overflow = 'auto';
-    }, 1000);
-  });
+        // Refresh animasi setiap 200ms selama 1 detik
+        let refreshCount = 0;
+        const refreshInterval = setInterval(() => {
+          initScrollAnimations();
+          if (++refreshCount >= 5) clearInterval(refreshInterval);
+        }, 200);
+
+        // Mulai musik
+        audioController.play();
+
+        // Aktifkan scroll
+        document.documentElement.style.overflow = "auto";
+        document.body.style.overflow = "auto";
+      }, 1000);
+    });
 
   // Event klik icon audio
-  document.querySelector('.audio-icon-wrapper').addEventListener('click', audioController.toggle);
+  document
+    .querySelector(".audio-icon-wrapper")
+    .addEventListener("click", audioController.toggle);
 });
