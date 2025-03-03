@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       // Tampilkan semua section
       document.querySelectorAll('section').forEach(section => {
-        section.style.display = "block";
+        section.style.display = "flex";
       });
 
       // Inisialisasi animasi scroll

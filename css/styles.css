@@ -15,7 +15,6 @@
 body {
   scroll-behavior: smooth;
   font-family: "Cormorant", sans-serif;
-  width: 100%;
   max-width: 450px;
   min-width: 450px;
   margin: 0 auto;
@@ -25,7 +24,7 @@ body {
 
 /* Tampilan Awal */
 #opening-screen {
-  width: 100%;
+  width: auto;
   height: 100vh;
   background: url("../assets/home.jpg") no-repeat center center/cover;
   display: flex;
@@ -34,7 +33,7 @@ body {
   color: white;
   text-align: center;
   transition: transform 1s ease-in-out;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 #opening-screen .content {
@@ -102,6 +101,7 @@ section {
   display: none; /* Sembunyikan home awalanya */
   color: #333;
   padding: 20px;
+  margin: auto;
   height: 100vh;
   width: 100%;
 }
@@ -109,15 +109,13 @@ section {
 #home,
 #biodata,
 #gallery  {
-  background-image: url(../assets/BACKGROUND.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: url(../assets/BACKGROUND.png) no-repeat center center/cover;
   width: auto;
   max-width: 450px;
 }
 
 #home .container {
+  position: relative;
   background-color: rgb(255, 255, 255);
   border-radius: 160px;
   max-width: 300px;
@@ -125,7 +123,6 @@ section {
   align-items: center;
   justify-content: center;
   margin: auto;
-  margin-top: 50px;
 }
 
 #home img {
@@ -290,10 +287,7 @@ section {
 
 .detail-all {
   margin-top: -2rem;
-  background-image: url(../assets/BACKGROUND.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: url(../assets/BACKGROUND.png) no-repeat center center/cover;
   border: 1px solid white;
   border-radius: 20px;
 }
@@ -381,10 +375,7 @@ section {
 }
 
 .story {
-  background-image: url(../assets/BACKGROUND.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: url(../assets/BACKGROUND.png) no-repeat center center/cover;
   color: var(--primary);
   border-radius: 20px;
   padding: 2rem;
@@ -433,10 +424,7 @@ section {
 
 .gift-content {
   margin-top: 2rem;
-  background-image: url(../assets/BACKGROUND.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: url(../assets/BACKGROUND.png) no-repeat center center/cover;
   border: 1px solid white;
   border-radius: 20px;
   text-align: center;
